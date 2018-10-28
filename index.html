@@ -94,16 +94,33 @@
 					<div class="col-md-10 col-md-offset-1">
 						<div class="home-content">
 							<h1 class="white-text">We Are Creative Agency</h1>
-							<p class="white-text"><h1 class="white-text" >1</h1>
+							<p class="white-text"><h1 class="white-text" id="countDown">3</h1>
 							</p>
 							<button class="main-btn" id="start">Start</button>
 						</div>
 					</div>
 
 					<script>
+						let count = 2
 						$('#start').click(function(){
-							var c = new CountUp["counter",0,5];
-							c.start();
+							var interval = setInterval(function () {
+
+								let countDown = $('#countDown')
+								let start = $('#start')
+								start.prop('disabled', true)
+								countDown.text(count)
+								count--
+
+								if (count === -1) {
+									count = 3
+									clearInterval(interval)
+									start.prop('disabled', false)
+									window.open('https://google.com', '_self')
+								}
+							}, 1000)
+
+							/* var c = new CountUp["counter",0,5];
+							c.start(); */
 						})
 					</script>
 					<!-- /home content -->
